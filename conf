@@ -1,0 +1,42 @@
+ori(xyz); rota(xyz); color(red, green, blue)
+CAM(ori, rota, focal)
+LUM(ori, intensite)
+OBJET(name, ori, rota, color, size) (limite a -int)
+
+CAM:
+0:0:0
+0:0:0
+9
+
+LUM:
+5000:-10000:0
+10
+
+OBJET:
+PLAN
+0:0:10000
+0:-1:1
+255:0:255
+50
+
+OBJET:
+SPHERE
+400:-40:10000
+0:0:0
+255:0:0
+100
+
+OBJET:
+SPHERE
+400:40:10100
+0:0:0
+255:0:255
+100
+
+OBJET:
+SPHERE
+-10:-100:10000
+0:0:0
+255:255:0
+50
+
