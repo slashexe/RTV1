@@ -12,8 +12,6 @@
 
 #include "../../include/rtv1.h"
 
-
-
 void	print_list(t_list *elem)
 {
 	t_obj	*tmpobj;
@@ -61,14 +59,9 @@ void	canon(t_env *env)
 			ray.ori = env->cam.ori;
 			ray.dir.x = (x - WIDTH / 2);
 			ray.dir.y = (y - HEIGHT / 2);
-			ray.dir.z = -10000.0f;
+			//ray.dir.z = -10000.0f;
+			ray.dir.z = FOV;
 
-			/*length = 1.0 / sqrt( ray.dir.x * ray.dir.x + ray.dir.y * ray.dir.y + ray.dir.z * ray.dir.z );
-			ray.dir.x *= length;
-			ray.dir.y *= length;
-			ray.dir.z *= length;
-			*/
-			//fisheye();
 			if (hit_obj(*env->list, &ray))
 			{
 				if (ray.obj != NULL)
@@ -86,12 +79,17 @@ void	canon(t_env *env)
 						l.y = env->lum.ori.y - ray.inter.y;
 						l.z = env->lum.ori.z - ray.inter.z;
 
-						if(ft_strcmp(ray.obj->name, "SPHERE") == 0)
+						if (ft_strcmp(ray.obj->name, "SPHERE") == 0)
 							n = get_normal_sphere(ray.inter, ray);
-						else if(ft_strcmp(ray.obj->name, "PLAN") == 0)
+						else if (ft_strcmp(ray.obj->name, "PLAN") == 0)
 							n = ray.obj->rota;
+						else if (ft_strcmp(ray.obj->name, "CYLINDER") == 0)
+						{
+							printf("totototototototo\n");
+							n = ray.obj->ori;
+						}
 						dt = v_dot(v_norm(n), v_norm(l));
-						if (x - WIDTH / 2 == -400 && y - HEIGHT / 2 == 37)
+						if (x - WIDTH / 2 == 0 && y - HEIGHT / 2 == 0)
 							printf("%s = red: %d green: %d blue: %d dt: %f |||\n", ray.obj->name, ray.obj->color.red, ray.obj->color.green, ray.obj->color.blue, dt);
 						if (dt < 0)
 						{

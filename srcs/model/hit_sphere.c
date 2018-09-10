@@ -44,6 +44,14 @@ t_vertex	init_quadratic(t_obj *obj, t_ray *ray)
 		q.y = 2 * v_dot(v1, ray->dir);
 		q.z = v_dot(v1, v1) - pow(obj->size, 2);
 	}
+	if(ft_strcmp(obj->name, "CYLINDER") == 0)
+	{
+		v1 = v_sub(obj->ori, ray->ori);
+		obj->rota = v_norm(obj->rota);
+		q.x = v_dot(ray->dir, ray->dir) - pow(v_dot(ray->dir, obj->rota), 2);
+		q.y = 2 * v_dot(v1, ray->dir) - (v_dot(ray->dir, obj->rota) * v_dot(v1, obj->rota));
+		q.z = v_dot(v1, v1) - pow(v_dot(v1, obj->rota), 2) - pow(obj->size, 2);
+	}
 	return (q);
 }
 
@@ -106,7 +114,6 @@ int			hit_obj(t_list list, t_ray *ray)
 		if (hit_it(tmpobj, ray))
 		{	
 			ray->hit = 1;
-			break;
 		}
 		list = *list.next;
 	}

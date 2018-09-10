@@ -22,7 +22,7 @@
 # include <fcntl.h>
 # define HEIGHT 1000
 # define WIDTH 1000
-# define FOV 30
+# define FOV -10000.0f
 # include "stdio.h"
 
 typedef struct	s_vertex
