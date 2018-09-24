@@ -6,7 +6,7 @@
 /*   By: avinas <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/10 18:59:23 by avinas            #+#    #+#             */
-/*   Updated: 2018/07/23 18:31:31 by avinas           ###   ########.fr       */
+/*   Updated: 2018/09/24 17:59:53 by fvignero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ t_cam	get_cam(int *fd, char **line)
 	ret.rota.z = ft_atoi(tab[2]);
 	get_next_line(*fd, line);
 	ret.focal = ft_atoi(*line);
-	printf("CAM : \nori= %f|%f|%f\nrota= %f|%f|%f\nfocal= %f\n", ret.ori.x, ret.ori.y, ret.ori.z, ret.rota.x, ret.rota.y, ret.rota.z, ret.focal);
+	printf("CAM : \nori= %d|%d|%d\nrota= %d|%d|%d\nfocal= %f\n", (int)ret.ori.x, (int)ret.ori.y, (int)ret.ori.z, (int)ret.rota.x, (int)ret.rota.y, (int)ret.rota.z, ret.focal);
 	get_next_line(*fd, line);
 	get_next_line(*fd, line);
 	return (ret);
@@ -50,7 +50,7 @@ t_lum	get_lum(int *fd, char **line)
 	ret.intens = ft_atoi(*line);
 	get_next_line(*fd, line);
 	get_next_line(*fd, line);
-	printf("LUM : \nori= %f|%f|%f\nintens= %f\n", ret.ori.x, ret.ori.y, ret.ori.z, ret.intens);
+	printf("LUM : \nori= %d|%d|%d\nintens= %f\n", (int)ret.ori.x, (int)ret.ori.y, (int)ret.ori.z, ret.intens);
 	return (ret);
 }
 
@@ -80,7 +80,7 @@ t_obj	get_obj(int *fd, char **line, int cpt)
 	ret.size = ft_atoi(*line);
 	get_next_line(*fd, line);
 	get_next_line(*fd, line);
-	printf("\nOBJET : \n%s\nori= %f|%f|%f\nrota= %f|%f|%f\ncolor= %d|%d|%d\nsize= %f\nID= %d\n", ret.name, ret.ori.x, ret.ori.y, ret.ori.z, ret.rota.x, ret.rota.y, ret.rota.z, ret.color.red, ret.color.green, ret.color.blue, ret.size, ret.id);
+	printf("\nOBJET : \n%s\nori= %d|%d|%d\nrota= %d|%d|%d\ncolor= %d|%d|%d\nsize= %f\nID= %d\n", ret.name, (int)ret.ori.x, (int)ret.ori.y, (int)ret.ori.z, (int)ret.rota.x, (int)ret.rota.y, (int)ret.rota.z, ret.color.red, ret.color.green, ret.color.blue, ret.size, ret.id);
 	return (ret);
 }
 

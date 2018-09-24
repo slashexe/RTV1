@@ -6,7 +6,7 @@
 /*   By: avinas <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/10 14:32:29 by avinas            #+#    #+#             */
-/*   Updated: 2018/07/24 15:44:47 by avinas           ###   ########.fr       */
+/*   Updated: 2018/09/24 17:58:09 by fvignero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	print_list(t_list *elem)
 
 void	print_vec(t_vertex vec)
 {
-	printf("x = %f | y = %f | z = %f\n", vec.x, vec.y, vec.z);
+	printf("x = %d | y = %d | z = %d\n", (int)vec.x, (int)vec.y, (int)vec.z);
 }
 
 void	canon(t_env *env)
